@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "fakemodmod",
+  "version": "${version}",
+  "name": "fakemodmod",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/penguinencounter/fakemodmod"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/fakemodmod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": ["org.penguinencounter.fakemodmod.Fakemodmod"],
+    "preLaunch": ["org.penguinencounter.fakemodmod.Preloader"]
+  },
+  "mixins": [
+    "fakemodmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
