@@ -27,7 +27,7 @@ public class FabricLoaderInterface {
 
             CREATE_PLAIN_METHOD = ModCandidate.class.getDeclaredMethod("createPlain", List.class, LoaderModMetadata.class, boolean.class, Collection.class);
             CREATE_PLAIN_METHOD.setAccessible(true);
-        } catch (NoSuchMethodException | NoSuchFieldException e ) {
+        } catch (NoSuchMethodException | NoSuchFieldException e) {
             throw new IllegalStateException("failed to reflect addMod/createPlain/mods - fabric loader unsupported?", e);
         }
     }

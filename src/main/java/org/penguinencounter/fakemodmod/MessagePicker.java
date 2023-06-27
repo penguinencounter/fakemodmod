@@ -5,5 +5,6 @@ import java.util.List;
 public interface MessagePicker {
     List<String> pick();
 
-    default void ready() {}
+    default void ready() {
+    }
 }

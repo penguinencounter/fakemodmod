@@ -54,6 +54,7 @@ public class Preloader implements PreLaunchEntrypoint {
                                 List.of()
                         ));
             }
-        } catch (VersionParsingException ignored) {}
+        } catch (VersionParsingException ignored) {
+        }
     }
 }
