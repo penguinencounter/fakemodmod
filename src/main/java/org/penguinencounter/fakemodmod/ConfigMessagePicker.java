@@ -23,11 +23,13 @@ public class ConfigMessagePicker implements MessagePicker {
     @Override
     public List<String> pick() {
         if (pickFrom == null) {
+            LOGGER.warn("Failed: pickFrom is null!");
             return List.of("Oh no!",
                     "The configuration file broke",
                     "Why is pickFrom null??");
         }
         if (pickFrom.entries.isEmpty()) {
+            LOGGER.info("No entries in configuration file");
             return List.of(
                     "You didn't configure the mod",
                     "Go to your .minecraft folder",
@@ -37,10 +39,12 @@ public class ConfigMessagePicker implements MessagePicker {
                     "Then restart the game"
             );
         }
+        LOGGER.info("picking mod message, of " + pickFrom.entries.size() + " entries");
         int index = (int) (Math.random() * pickFrom.entries.size());
         return pickFrom.entries.get(index);
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void _ready() throws IOException {
         Path configFile = FabricLoader.getInstance().getConfigDir().resolve("fmm_picker.json");
         Gson gson = new GsonBuilder().create();
@@ -50,6 +54,7 @@ public class ConfigMessagePicker implements MessagePicker {
             try (FileWriter writer = new FileWriter(configFile.toFile())) {
                 gson.toJson(new PickerFormat(), writer);
             }
+            pickFrom = new PickerFormat();
             return;
         }
         try (FileReader reader = new FileReader(configFile.toFile())) {
@@ -62,7 +67,7 @@ public class ConfigMessagePicker implements MessagePicker {
         try {
             _ready();
         } catch (IOException e) {
-
+            LOGGER.warn("Failed to read configuration file", e);
         }
     }
 }
