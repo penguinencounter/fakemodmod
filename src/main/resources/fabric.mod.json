@@ -10,7 +10,7 @@
   },
   "license": "GPL-3.0",
   "icon": "assets/fakemodmod/icon.png",
-  "environment": "client",
+  "environment": "*",
   "entrypoints": {
     "main": ["org.penguinencounter.fakemodmod.Fakemodmod"],
     "preLaunch": ["org.penguinencounter.fakemodmod.Preloader"]
